@@ -15,7 +15,8 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SQLALCHEMY_DATABASE_URI=f"postgres://{os.getenv('POSTGRES_USER')}:"
         f"{os.getenv('postgres_password')}@{os.getenv('POSTGRES_HOST')}:"
-        f"{os.getenv('postgres_port')}/{os.getenv('postgres_db')}"
+        f"{os.getenv('postgres_port')}/{os.getenv('postgres_db')}",
+        SQLALCHEMY_TRACK_MODIFICATIONS=False,
     )
     db.init_app(app)
 
