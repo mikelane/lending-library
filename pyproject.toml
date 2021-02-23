@@ -17,6 +17,8 @@ Flask-Admin = "^1.5.7"
 psycopg2-binary = "^2.8.6"
 gunicorn = "^20.0.4"
 python-dotenv = "^0.15.0"
+marshmallow-sqlalchemy = "^0.24.2"
+SQLAlchemy-Utils = "^0.36.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
@@ -34,15 +36,9 @@ mypy = {version = "^0.812", allow-prereleases = true}
 pytest-mypy = {version = "^0.8.0", allow-prereleases = true}
 pytest-common-subject = "^1.0.5"
 
-[tool.pytest.ini_options]
-minversion = '6.0'
-addopts = '-ra -vvv'
-testpaths = ['tests']
-python_functions = ['test_*', 'it_*']
-
 [tool.black]
 line-length = 110
-include = '.pyi?$'
+include = ".pyi?$"
 exclude = '''
 (
   (
