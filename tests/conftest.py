@@ -1,20 +1,19 @@
 import logging
 
 import pytest
-from sqlalchemy import event
-from sqlalchemy.orm import sessionmaker
+from pytest_factoryboy import register
 
 from alembic.command import downgrade, upgrade
 from alembic.config import Config
 from api import create_app
 from api import db as _db
-from api import ma
 from config import basedir
+from tests.factories import UserFactory
 
 logger = logging.getLogger(__name__)
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session")
 def app():
     logger.info("Creating test application")
     test_app = create_app()
@@ -29,8 +28,6 @@ def db(app):
     logger.info("Setting up test database")
     upgrade(config, "head")
 
-    _db.init_app(app)
-    ma.init_app(app)
     yield _db
 
     logger.info("Tearing down Test database")
@@ -38,28 +35,15 @@ def db(app):
 
 
 @pytest.fixture(scope="function")
-def session(db):
-    logger.info("Setting up database session")
-    Session = sessionmaker()
-    connection = db.engine.connect()
-    trans = connection.begin()
-    session = Session(bind=connection)
-    session.begin_nested()
+def session(db, request):
+    db.session.begin_nested()
 
-    @event.listens_for(session, "after_transaction_end")
-    def restart_savepoint(session, transaction):
-        if transaction.nested and not transaction.parent.nested:
+    def teardown():
+        db.session.rollback()
+        db.session.close()
 
-            # ensure that state is expired the way
-            # session.commit() at the top level normally does
-            # (optional step)
-            session.expire_all()
+    request.addfinalizer(teardown)
+    return db.session
 
-            session.begin_nested()
 
-    yield session
-
-    logger.info("Rolling back database session")
-    session.close()
-    trans.rollback()
-    connection.close()
+register(UserFactory)

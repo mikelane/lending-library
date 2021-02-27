@@ -1,0 +1,55 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="72" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="PyMethodMayBeStaticInspection" enabled="true" level="WEAK WARNING" enabled_by_default="false">
+      <scope name="Non-Test" level="WEAK WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="34">
+            <item index="0" class="java.lang.String" itemvalue="python-coveralls" />
+            <item index="1" class="java.lang.String" itemvalue="flask_swagger" />
+            <item index="2" class="java.lang.String" itemvalue="pympler" />
+            <item index="3" class="java.lang.String" itemvalue="requests-aws4auth" />
+            <item index="4" class="java.lang.String" itemvalue="aws-sam-translator" />
+            <item index="5" class="java.lang.String" itemvalue="awscli" />
+            <item index="6" class="java.lang.String" itemvalue="pyopenssl" />
+            <item index="7" class="java.lang.String" itemvalue="flake8" />
+            <item index="8" class="java.lang.String" itemvalue="sasl" />
+            <item index="9" class="java.lang.String" itemvalue="amazon_kclpy-ext" />
+            <item index="10" class="java.lang.String" itemvalue="flake8-quotes" />
+            <item index="11" class="java.lang.String" itemvalue="docopt" />
+            <item index="12" class="java.lang.String" itemvalue="elasticsearch" />
+            <item index="13" class="java.lang.String" itemvalue="flask-cors" />
+            <item index="14" class="java.lang.String" itemvalue="xmltodict" />
+            <item index="15" class="java.lang.String" itemvalue="nose-timer" />
+            <item index="16" class="java.lang.String" itemvalue="coverage" />
+            <item index="17" class="java.lang.String" itemvalue="nose" />
+            <item index="18" class="java.lang.String" itemvalue="subprocess32" />
+            <item index="19" class="java.lang.String" itemvalue="dnspython" />
+            <item index="20" class="java.lang.String" itemvalue="botocore" />
+            <item index="21" class="java.lang.String" itemvalue="boto" />
+            <item index="22" class="java.lang.String" itemvalue="crontab" />
+            <item index="23" class="java.lang.String" itemvalue="moto-ext" />
+            <item index="24" class="java.lang.String" itemvalue="jsonpath-rw" />
+            <item index="25" class="java.lang.String" itemvalue="airspeed" />
+            <item index="26" class="java.lang.String" itemvalue="localstack-client" />
+            <item index="27" class="java.lang.String" itemvalue="psutil" />
+            <item index="28" class="java.lang.String" itemvalue="pyyaml" />
+            <item index="29" class="java.lang.String" itemvalue="boto3" />
+            <item index="30" class="java.lang.String" itemvalue="localstack-ext" />
+            <item index="31" class="java.lang.String" itemvalue="cachetools" />
+            <item index="32" class="java.lang.String" itemvalue="forbiddenfruit" />
+            <item index="33" class="java.lang.String" itemvalue="jsonpatch" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

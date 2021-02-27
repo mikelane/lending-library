@@ -5,6 +5,7 @@ import subprocess
 
 from dotenv import load_dotenv
 from flask import Flask
+from flask_alembic import Alembic
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 
@@ -18,18 +19,22 @@ result = load_dotenv("production.env", override=True)
 
 db = SQLAlchemy()
 ma = Marshmallow()
+alembic = Alembic()
 
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     if test_config is None:
+        logger.debug(f'Config from object: {os.getenv("APP_SETTINGS")}')
         app.config.from_object(os.getenv("APP_SETTINGS"))
     else:
+        logger.debug(f"Config from mapping: {test_config!r}")
         app.config.from_mapping(test_config)
 
     db.init_app(app)
     ma.init_app(app)
+    alembic.init_app(app)
 
     # a simple page that says hello
     @app.route("/health-check")
